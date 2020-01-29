@@ -1,5 +1,5 @@
 import React from 'react';
-import fileToString from './Data.js'
+import fileToString from './FetchData.js'
 
 const View = () => {
 
@@ -7,7 +7,7 @@ const View = () => {
 
     return (
     <div>
-      <div>Pimppa :D</div>
+      <div>:D</div>
     </div>
     )
   }
