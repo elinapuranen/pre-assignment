@@ -4,7 +4,7 @@ const fileToString = () => {
     fetch(file)
       .then((response) => response.text())
       .then(data => {
-          console.log(JSON.stringify(data))
+          return data
       })
 }
 

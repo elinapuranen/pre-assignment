@@ -1,9 +1,9 @@
 import React from 'react';
-import fileToString from './FetchData.js'
+import parseData from './Parse.js';
 
 const View = () => {
 
-  fileToString()
+  parseData()
 
     return (
     <div>
