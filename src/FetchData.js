@@ -1,12 +1,10 @@
 import file from '../Data/status.real'
 
-var strdata = 'data'
-
 const fileToString = () => {
-    fetch(file)
-      .then((response) => response.text())
+    return fetch(file)
+      .then(response => response.text())
       .then(data => {
-          strdata = data
+          return data
       })
 }
 
