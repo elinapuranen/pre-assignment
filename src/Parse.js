@@ -1,7 +1,7 @@
 import fileToString from './FetchData'
 
 const parseData = () => { 
-    fileToString().then(function(result) {
+    return fileToString().then(function(result) {
      var data = result.split('\n\n').map(entry => {
             const obj = {}
             entry.split('\n').forEach(keyValue => {
@@ -12,7 +12,7 @@ const parseData = () => {
             })
             return obj
         })
-        return JSON.stringify(data)
+        return data
     })
 }
 

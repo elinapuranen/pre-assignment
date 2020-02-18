@@ -1,4 +1,4 @@
-import file from '../Data/status.real'
+import file from '../data/status.real'
 
 const fileToString = () => {
     return fetch(file)
