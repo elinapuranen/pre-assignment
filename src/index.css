@@ -2,3 +2,30 @@
   display: flex;
   justify-content: center;
 }
+
+.packageItem {
+  padding: 5px;
+  font-size: 17px; 
+}
+
+.packageInfo {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.packageName {
+  padding: 10px;
+}
+
+.description {
+  padding: 10px;
+}
+
+.dependencies {
+  padding: 10px;
+}
+
+.reverseDependencies {
+  padding: 10px;
+}

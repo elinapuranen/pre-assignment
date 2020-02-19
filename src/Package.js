@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import parseData from './Parse.js';
+import parseData from './Parse.js'
 
 const Package = (props) => {
 
@@ -20,82 +20,81 @@ const Package = (props) => {
 
   let reverseDependencies = findReverseDependencies()
 
-  function findReverseDependencies() {
-  let array = []
-  if (dataWithDependencies.length > 0) {
-    dataWithDependencies.map(item => {
-      if (item.Depends.includes(name)) {
-        array.push(item.Package)
-      }   
-      item.Depends.map(itemName => {
-        if (itemName.includes('|')) {
-          const splittedName = itemName.split('| ')
-          if (splittedName.includes(name)) {
-            console.log(item.Package)
-            array.push(item.Package)
+  function findReverseDependencies(){
+    let array = []
+    if (dataWithDependencies.length > 0) {
+      dataWithDependencies.map(item => {
+        if (item.Depends.includes(name)) {
+          array.push(item.Package)
+        }   
+        item.Depends.map(itemName => {
+          if (itemName.includes('|')) {
+            const splittedName = itemName.split('| ')
+            if (splittedName.includes(name)) {
+              array.push(item.Package)
+            }
           }
-        }
-    })
-  })
+        })
+      })
+    }
+    return array
   }
-  return array
-}
 
   let dependencies = findDependencies()
  
   function findDependencies() {
-  let array = []
-  if (data.length > 0 && data[index].Depends !== undefined) {
-    data[index].Depends.map(name => {
-      if (name.includes('|')) {
-      array.push(...name.split('| '))
+    let array = []
+    if (data.length > 0 && data[index].Depends !== undefined) {
+      data[index].Depends.map(name => {
+        if (name.includes('|')){
+          array.push(...name.split('| '))
+        }
+        else array.push(name)
       }
-      else array.push(name)
+      )
     }
-    )
+    return array
   }
-  return array
-}
 
   return (
-    <div>
+    <div className="packageInfo">
       {data.length > 0 &&
       <div>
-      <div>
-        Package name: {name}
-      </div>
-      <div>
+        <h3 className="packageName">
+        Package Name: {name}
+        </h3>
+        <div className="description">
         Description: {data[index].Description}
-      </div>
-      <div>
+        </div>
+        <div className="dependencies">
         Dependencies: {dependencies.length > 0 &&
         <div>
-        {dependencies.map(name =>
-        <div key={name}>
-          {(data.findIndex(element => element.Package === name)) !== -1 ?
-          <Link to={`/packages/${name}`}>{name}</Link>
-          : name
-        }
-        </div>  
-        )}
+          {dependencies.map(name =>
+            <div key={name}>
+              {(data.findIndex(element => element.Package === name)) !== -1 ?
+                <Link to={`/packages/${name}`}>{name}</Link>
+                : name
+              }
+            </div>  
+          )}
         </div>
-        }
-      </div>
-      <div>
-        Reverse dependencies: {reverseDependencies.length > 0 &&
-        <div>
-        {reverseDependencies.map(name => 
-          <div key={name}>
-            <Link to={`/packages/${name}`}>{name}</Link>
-            </div>
-            )}
-            </div>
           }
-      </div>
+        </div>
+        <div className="reverseDependencies">
+        Reverse Dependencies: {reverseDependencies.length > 0 &&
+        <div>
+          {reverseDependencies.map(name => 
+            <div key={name}>
+              <Link to={`/packages/${name}`}>{name}</Link>
+            </div>
+          )}
+        </div>
+          }
+        </div>
       </div>
       }
     </div>
   )
 }
 
-export default Package;
+export default Package

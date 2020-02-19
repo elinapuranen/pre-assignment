@@ -23,7 +23,7 @@ const FrontPage = () => {
       <ul className="List">
         {data.length > 0 &&
             <div>{data.map(item =>
-              <div key={item.Package}>
+              <div key={item.Package} className="packageItem">
                 <Link to={`/packages/${item.Package}`}>{item.Package}</Link>
               </div>)}</div>
         }
