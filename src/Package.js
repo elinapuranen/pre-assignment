@@ -59,7 +59,7 @@ const Package = (props) => {
   return (
     <div className="packageInfo">
       {data.length > 0 &&
-      <div>
+      <div className="package">
         <h3 className="packageName">
         Package Name: {name}
         </h3>

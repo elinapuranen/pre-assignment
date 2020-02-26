@@ -11,7 +11,12 @@
 .packageInfo {
   display: flex;
   justify-content: center;
+  align-self: center;
   padding-top: 40px;
+}
+
+.package {
+  width: 600px;
 }
 
 .packageName {
